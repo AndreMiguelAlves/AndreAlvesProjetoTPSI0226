@@ -3,7 +3,7 @@ from guardar import guardar_dados, carregar_dados
 from validar import validar_email, validar_data, validar_codigo_colmeia
 
 def menu_principal():
-    # Carregar dados ao iniciar
+   
     colmeias = carregar_dados()
     
     while True:
@@ -15,7 +15,7 @@ def menu_principal():
         opcao = input("\nEscolha uma opção: ")
         
         if opcao == "1":
-            # Aqui vamos pedir os dados e usar as validações (ver passo seguinte)
+            
             print("\nFuncionalidade de registo em desenvolvimento...")
             
         elif opcao == "2":
