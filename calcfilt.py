@@ -6,5 +6,3 @@ def gerar_estatisticas(lista):
         tipos[t] = tipos.get(t, 0) + 1
     return {"total": len(lista), "tipos": tipos}
 
-def filtrar_por_local(lista, local):
-    return [c for c in lista if local.lower() in c['localizacao'].lower()]

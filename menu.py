@@ -1,10 +1,9 @@
-from logica import criar_colmeia, atualizar_colmeia, eliminar_colmeia
+from logica import criar_colmeia, eliminar_colmeia
 from guardar import guardar_dados, carregar_dados
 from validar import validar_email, validar_data, validar_codigo_colmeia
 from pesquisa import pesquisa_linear, pesquisa_binaria
-from Ordenacao import bubble_sort, selection_sort
-from calcfilt import gerar_estatisticas, filtrar_por_local
-
+from ordenar import bubble_sort
+from calcfilt import gerar_estatisticas
 def ler_input(msg, func, erro):
     while True:
         val = input(msg).strip()
@@ -31,14 +30,30 @@ def menu():
             for c in colmeias: print(f"{c['id']} | {c['codigo']} | {c['localizacao']}")
 
         elif op == "3":
-            termo = input("ID para Pesquisa Binária: ")
-            col_ord = sorted(colmeias, key=lambda x: x['id'])
-            res = pesquisa_binaria(col_ord, 'id', termo)
-            print(res if res else "Não encontrado.")
+            print("\n--- PESQUISA POR CÓDIGO ---")
+            if not colmeias:
+                print("Não existem colmeias registadas para pesquisar.")
+                continue
+                
+            
+            termo = input("Introduza o Código da colmeia: ").strip()
+            
+           
+            res = pesquisa_linear(colmeias, 'codigo', termo)
+            
+            if res:
+                print(f"\nEncontrada(s) {len(res)} colmeia(s):")
+                print("-" * 60)
+                for c in res:
+                    print(f"Código: {c['codigo']}")
+                    print(f"ID Único: {c['id']}")
+                    print(f"Localização: {c['localizacao']}")
+                    print("-" * 60)
+            else:
+                print(f"\n[Aviso] Nenhuma colmeia encontrada com o código '{termo}'.")
 
         elif op == "4":
             id_e = input("ID a editar: ")
-            # Lógica de edição similar ao registo...
             pass
 
         elif op == "5":
