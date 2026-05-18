@@ -10,7 +10,7 @@ def guardar_dados(lista_colmeias):
             json.dump(lista_colmeias, f, indent=4, ensure_ascii=False)
         print("\n[Sucesso] Dados guardados com êxito!")
     except Exception as e:
-        print(f"\n[Erro] Falha ao guardar dados: {e}")
+        print(f"\nFalha ao guardar dados: {e}")
 
 def carregar_dados():
     
@@ -20,5 +20,5 @@ def carregar_dados():
         with open(FICHEIRO_DADOS, 'r', encoding='utf-8') as f:
             return json.load(f)
     except Exception as e:
-        print(f"\n[Erro] Falha ao carregar dados: {e}")
+        print(f"\nFalha ao carregar dados: {e}")
         return []

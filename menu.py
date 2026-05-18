@@ -1,14 +1,15 @@
 from logica import criar_colmeia, eliminar_colmeia
 from guardar import guardar_dados, carregar_dados
 from validar import validar_email, validar_data, validar_codigo_colmeia
-from pesquisa import pesquisa_linear, pesquisa_binaria
+from pesquisa import pesquisa_linear
 from ordenar import bubble_sort
 from calcfilt import gerar_estatisticas
+
 def ler_input(msg, func, erro):
     while True:
         val = input(msg).strip()
         if func(val): return val
-        print(f"[Erro] {erro}")
+        print(f"Erro: {erro}")
 
 def menu():
     colmeias = carregar_dados()
@@ -50,7 +51,7 @@ def menu():
                     print(f"Localização: {c['localizacao']}")
                     print("-" * 60)
             else:
-                print(f"\n[Aviso] Nenhuma colmeia encontrada com o código '{termo}'.")
+                print(f"\nNenhuma colmeia encontrada com o código '{termo}'.")
 
         elif op == "4":
             id_e = input("ID a editar: ")
